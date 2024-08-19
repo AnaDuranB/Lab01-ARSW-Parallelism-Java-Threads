@@ -77,13 +77,13 @@ La estrategia de paralelismo antes implementada es ineficiente en ciertos casos,
 A partir de lo anterior, implemente la siguiente secuencia de experimentos para realizar las validación de direcciones IP dispersas (por ejemplo 202.24.34.55), tomando los tiempos de ejecución de los mismos (asegúrese de hacerlos en la misma máquina):
 
 1. Un solo hilo.
-    - ![1Hilo.png](1Hilo.png)
+    - ![1Hilo.png](img/1Hilo.png)
 2. Tantos hilos como núcleos de procesamiento (haga que el programa determine esto haciendo uso del [API Runtime](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html)).
-   - ![img.png](nucleosProcesamiento.png)
+   - ![img.png](img/nucleosProcesamiento.png)
 3. Tantos hilos como el doble de núcleos de procesamiento.
-   - ![img.png](nucleosProcesamientox2.png)
+   - ![img.png](img/nucleosProcesamientox2.png)
 4. 50 hilos.
-   - ![img.png](50Hilos.png)
+   - ![img.png](img/50Hilos.png)
 5. 100 hilos.
    - ![img.png](100Hilos.png)
    
@@ -91,17 +91,17 @@ Al iniciar el programa ejecute el monitor jVisualVM, y a medida que corran las p
 
 Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tiempo de solución vs. número de hilos. Analice y plantee hipótesis con su compañero para las siguientes preguntas (puede tener en cuenta lo reportado por jVisualVM):
 1. 1 hilo
-   * ![img.png](CPU1Hilo.png)
-   * ![img.png](1Hilo.png)
+   * ![img.png](img/CPU1Hilo.png)
+   * ![img.png](img/1Hilo.png)
 2. Tantos hilos como núcleos de procesamiento
-   * ![img.png](CPU-NP.png)
-   * ![img.png](nucleosProcesamiento.png)
+   * ![img.png](img/CPU-NP.png)
+   * ![img.png](img/nucleosProcesamiento.png)
 3. Tantos hilos como el doble de núcleos de procesamiento.
-   * ![img.png](CPUNPx2.png)
-   * ![img_1.png](nucleosProcesamientox2.png)
+   * ![img.png](img/CPUNPx2.png)
+   * ![img_1.png](img/nucleosProcesamientox2.png)
 4. 50 hilos.
-   * ![img.png](CPU50Hilos.png)
-   * ![img.png](50Hilos.png)
+   * ![img.png](img/CPU50Hilos.png)
+   * ![img.png](img/50Hilos.png)
 5. 100 Hilos.
    * ![img.png](100Hilos.png)
 **Parte IV - Ejercicio Black List Search**
