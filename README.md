@@ -1,6 +1,7 @@
 
 ### Escuela Colombiana de Ingeniería
 ### Arquitecturas de Software - ARSW
+### Elaborado por: Laura Natalia Rojas y Ana Maria Duran
 ## Ejercicio Introducción al paralelismo - Hilos - Caso BlackListSearch
 
 
@@ -21,7 +22,11 @@
 	2. Inicie los tres hilos con 'start()'.
 	3. Ejecute y revise la salida por pantalla. 
 	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
-
+       5. El comportamiento cambia, con run() se ejecuta el metodo, no en un hilo separado sino en el hilo principal. Esto quiere decir que los números se imprimirán en el mismo hilo que llama a run, sin ejecución concurrente (porque se imprimen secuencialmente, uno tras otro).
+          - ![img.png](img/img.png)
+       6. Con start() los números se imprimen concurrentemente y en la consola podemos ver como llegan a mezclarse las ejecuciones, esto debido a que los hilos se ejecutan en paralelo.
+          - ![img_1.png](img/img_1.png)
+       
 **Parte II - Ejercicio Black List Search**
 
 
@@ -61,20 +66,44 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 La estrategia de paralelismo antes implementada es ineficiente en ciertos casos, pues la búsqueda se sigue realizando aún cuando los N hilos (en su conjunto) ya hayan encontrado el número mínimo de ocurrencias requeridas para reportar al servidor como malicioso. Cómo se podría modificar la implementación para minimizar el número de consultas en estos casos?, qué elemento nuevo traería esto al problema?
 
+- Podemos modificar la implementación para que los hilos se detengan tan pronto como se alcance el número mínimo de ocurrencias requeridas. Esto se puede lograr utilizando una bandera global de terminación.
+  - Es una variable booleana que se utiliza para indicar si los hilos deben detener su trabajo. Esta bandera se define en el hilo principal y es accesible para todos los hilos secundarios.
+  - Los hilos secundarios deben verificar periódicamente el estado de esta bandera. Cuando el hilo principal detecta que se ha alcanzado el número mínimo de ocurrencias, cambia el valor de la bandera para indicar que los hilos deben detenerse.
+  - Utilizar una bandera global de terminación permite al hilo principal gestionar la ejecución de los hilos secundarios de manera eficiente sin necesidad de que los hilos se coordinen entre sí.
+
+
 **Parte III - Evaluación de Desempeño**
 
 A partir de lo anterior, implemente la siguiente secuencia de experimentos para realizar las validación de direcciones IP dispersas (por ejemplo 202.24.34.55), tomando los tiempos de ejecución de los mismos (asegúrese de hacerlos en la misma máquina):
 
 1. Un solo hilo.
+    - ![1Hilo.png](1Hilo.png)
 2. Tantos hilos como núcleos de procesamiento (haga que el programa determine esto haciendo uso del [API Runtime](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html)).
+   - ![img.png](nucleosProcesamiento.png)
 3. Tantos hilos como el doble de núcleos de procesamiento.
+   - ![img.png](nucleosProcesamientox2.png)
 4. 50 hilos.
+   - ![img.png](50Hilos.png)
 5. 100 hilos.
-
+   - ![img.png](100Hilos.png)
+   
 Al iniciar el programa ejecute el monitor jVisualVM, y a medida que corran las pruebas, revise y anote el consumo de CPU y de memoria en cada caso. ![](img/jvisualvm.png)
 
 Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tiempo de solución vs. número de hilos. Analice y plantee hipótesis con su compañero para las siguientes preguntas (puede tener en cuenta lo reportado por jVisualVM):
-
+1. 1 hilo
+   * ![img.png](CPU1Hilo.png)
+   * ![img.png](1Hilo.png)
+2. Tantos hilos como núcleos de procesamiento
+   * ![img.png](CPU-NP.png)
+   * ![img.png](nucleosProcesamiento.png)
+3. Tantos hilos como el doble de núcleos de procesamiento.
+   * ![img.png](CPUNPx2.png)
+   * ![img_1.png](nucleosProcesamientox2.png)
+4. 50 hilos.
+   * ![img.png](CPU50Hilos.png)
+   * ![img.png](50Hilos.png)
+5. 100 Hilos.
+   * ![img.png](100Hilos.png)
 **Parte IV - Ejercicio Black List Search**
 
 1. Según la [ley de Amdahls](https://www.pugetsystems.com/labs/articles/Estimating-CPU-Performance-using-Amdahls-Law-619/#WhatisAmdahlsLaw?):
