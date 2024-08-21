@@ -115,9 +115,23 @@ Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tie
 
 1. Según la [ley de Amdahls](https://www.pugetsystems.com/labs/articles/Estimating-CPU-Performance-using-Amdahls-Law-619/#WhatisAmdahlsLaw?):
 
-	![](img/ahmdahls.png), donde _S(n)_ es el mejoramiento teórico del desempeño, _P_ la fracción paralelizable del algoritmo, y _n_ el número de hilos, a mayor _n_, mayor debería ser dicha mejora. Por qué el mejor desempeño no se logra con los 500 hilos?, cómo se compara este desempeño cuando se usan 200?. 
+	![](img/ahmdahls.png), donde _S(n)_ es el mejoramiento teórico del desempeño, _P_ la fracción paralelizable del algoritmo, y _n_ el número de hilos, a mayor _n_, mayor debería ser dicha mejora. Por qué el mejor desempeño no se logra con los 500 hilos?, cómo se compara este desempeño cuando se usan 200?.
+
+	Hipótesis: Se cree que al aplicar la ley de Amdahl (al aumentar el número de hilos n, se espera que mejore el desempeño) existe un límite en el cual agregar más hilos no hace gran diferencia, esto debido a que aumentar n no proporciona un beneficio significativo debido a la baja fracción de código adicional que se puede paralelizar.
+
+	Al ejecutar el programa con 200 y 500 hilos, obtenemos los siguientes tiempos de ejecución:
+
+	![image](https://github.com/user-attachments/assets/8d189c74-b649-4e9a-a704-14a3d1ea7a68)
+	![image](https://github.com/user-attachments/assets/5b2c5480-0acf-4db3-9792-21d3fc44125a)
+
+	En este caso, al pasar de 200 a 500 hilos, el tiempo de solución apenas mejora ligeramente (de 0.957 a 0.854 segundos), lo que sugiere que el algoritmo ha alcanzado un punto en el que agregar más hilos no produce mejoras sustanciales en el tiempo de ejecución.
+	
 
 2. Cómo se comporta la solución usando tantos hilos de procesamiento como núcleos comparado con el resultado de usar el doble de éste?.
+
+   	Hipótesis: Cuando se utilizan tantos hilos como núcleos (4 hilos), el programa se ejecuta en 33.242 segundos. Al duplicar el número de hilos (8 hilos), el tiempo de ejecución mejora significativamente a 17.318 segundos. Esta reducción en el tiempo de ejecución sugiere que, al duplicar los hilos, se está aprovechando mejor la capacidad de procesamiento, probablemente debido a una mayor concurrencia y a que más tareas pueden ser ejecutadas en paralelo.
+
+   Sin embargo, como vimos en el punto anterior, esta mejora puede no continuar indefinidamente.
 
 3. De acuerdo con lo anterior, si para este problema en lugar de 100 hilos en una sola CPU se pudiera usar 1 hilo en cada una de 100 máquinas hipotéticas, la ley de Amdahls se aplicaría mejor?. Si en lugar de esto se usaran c hilos en 100/c máquinas distribuidas (siendo c es el número de núcleos de dichas máquinas), se mejoraría?. Explique su respuesta.
 
