@@ -135,5 +135,13 @@ Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tie
 
 3. De acuerdo con lo anterior, si para este problema en lugar de 100 hilos en una sola CPU se pudiera usar 1 hilo en cada una de 100 máquinas hipotéticas, la ley de Amdahls se aplicaría mejor?. Si en lugar de esto se usaran c hilos en 100/c máquinas distribuidas (siendo c es el número de núcleos de dichas máquinas), se mejoraría?. Explique su respuesta.
 
+   Caso 1 - Un hilo en cada una de las 100 máquinas hipotéticas:
+
+   Si, la Ley de Amdahl se aplicaría mejor si se usa 1 hilo en 100 máquinas que 100 hilos en una sola CPU, porque cada máquina puede trabajar de forma independiente sin interferencias, ya que cada hilo tiene acceso exclusivo a los recursos de su CPU, aprovechando mejor el paralelismo. En una sola CPU con muchos hilos, la concurrencia no es tan eficiente porque todos los hilos tienen que compartir el tiempo de la CPU, lo que causa problemas como la sobrecarga al cambiar entre hilos.
+
+   Caso 2 - c hilos en 100/c máquinas distribuidas: 
+
+   Si se mejoría, Al usar c hilos en 100/c máquinas distribuidas, donde c es el número de núcleos de cada máquina, cada máquina puede aprovechar al máximo todos sus núcleos, permitiendo que todos los hilos se ejecuten en paralelo sin tener que compartir el tiempo de CPU entre ellos. Esto reduce la sobrecarga de la gestión de hilos y maximiza el uso del paralelismo, lo que da como resultado un mejor rendimiento comparado con tener muchos hilos en una sola CPU.
+
 
 
