@@ -25,7 +25,7 @@
        5. El comportamiento cambia, con run() se ejecuta el metodo, no en un hilo separado sino en el hilo principal. Esto quiere decir que los números se imprimirán en el mismo hilo que llama a run, sin ejecución concurrente (porque se imprimen secuencialmente, uno tras otro).
           - ![img.png](img/img.png)
        6. Con start() los números se imprimen concurrentemente y en la consola podemos ver como llegan a mezclarse las ejecuciones, esto debido a que los hilos se ejecutan en paralelo.
-          - ![img_1.png](img/img_1.png)
+       	- ![img_1.png](img/img_1.png)
        
 **Parte II - Ejercicio Black List Search**
 
