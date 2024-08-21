@@ -77,33 +77,40 @@ La estrategia de paralelismo antes implementada es ineficiente en ciertos casos,
 A partir de lo anterior, implemente la siguiente secuencia de experimentos para realizar las validación de direcciones IP dispersas (por ejemplo 202.24.34.55), tomando los tiempos de ejecución de los mismos (asegúrese de hacerlos en la misma máquina):
 
 1. Un solo hilo.
-    - ![1Hilo.png](img/1Hilo.png)
+    - ![Time1Hilo](https://github.com/user-attachments/assets/7ce3d3dd-f12d-4a5a-b2f1-6a9e1b49714c)
 2. Tantos hilos como núcleos de procesamiento (haga que el programa determine esto haciendo uso del [API Runtime](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html)).
-   - ![img.png](img/nucleosProcesamiento.png)
+   - ![TimeNucleosProcesamiento](https://github.com/user-attachments/assets/001c4b40-20f6-43ae-8035-3e3d41609a2e)
 3. Tantos hilos como el doble de núcleos de procesamiento.
-   - ![img.png](img/nucleosProcesamientox2.png)
+   - ![TimeDobleNucleosProcesamiento](https://github.com/user-attachments/assets/bf372eff-031c-47ce-bd7d-65f65c402d3b)
 4. 50 hilos.
-   - ![img.png](img/50Hilos.png)
+   - ![Time50Hilos](https://github.com/user-attachments/assets/0b8da2d7-8949-4219-a195-0f989ad4fc3c)
 5. 100 hilos.
-   - ![img.png](100Hilos.png)
-   
+   - ![Time100Hilos](https://github.com/user-attachments/assets/fc51eca9-d4c9-414f-b7af-39f97e4d5c5f)
+
 Al iniciar el programa ejecute el monitor jVisualVM, y a medida que corran las pruebas, revise y anote el consumo de CPU y de memoria en cada caso. ![](img/jvisualvm.png)
 
 Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tiempo de solución vs. número de hilos. Analice y plantee hipótesis con su compañero para las siguientes preguntas (puede tener en cuenta lo reportado por jVisualVM):
 1. 1 hilo
-   * ![img.png](img/CPU1Hilo.png)
-   * ![img.png](img/1Hilo.png)
+   * ![CPU1Hilo](https://github.com/user-attachments/assets/9a58518b-fa0a-428e-8307-3e3af32a91a9)
+   * ![Time1HiloVisualVM](https://github.com/user-attachments/assets/98cc6e83-e635-4b6b-9a59-2f16533d09d6)
 2. Tantos hilos como núcleos de procesamiento
-   * ![img.png](img/CPU-NP.png)
-   * ![img.png](img/nucleosProcesamiento.png)
+   * ![CPUNucleos](https://github.com/user-attachments/assets/d7284230-d91d-4bde-a4c1-5ca073ce8c19)
+   * ![CPUNucleosVisualVM](https://github.com/user-attachments/assets/9797c38f-d47a-4b8d-801a-959cd3fd9667)
 3. Tantos hilos como el doble de núcleos de procesamiento.
-   * ![img.png](img/CPUNPx2.png)
-   * ![img_1.png](img/nucleosProcesamientox2.png)
+   * ![CPUDobleNucleos](https://github.com/user-attachments/assets/74bfffaf-9cea-48fc-9237-0b69767f24aa)
+   * ![TimeDobleNucleosVM](https://github.com/user-attachments/assets/1baf073a-1ef6-4d39-9c91-a4b011f5b52e)
 4. 50 hilos.
-   * ![img.png](img/CPU50Hilos.png)
-   * ![img.png](img/50Hilos.png)
+   * ![CPU50Hilos](https://github.com/user-attachments/assets/facd0fe0-2588-4dd1-b39b-dc9d2856d146)
+   * ![Time50HilosVisualVM](https://github.com/user-attachments/assets/0862f92a-1aa1-4901-9c30-dc751a42dc6c)
+
+     Acá se puede ver que el tiempo de solución fue tan pequeño que no se alcanza a apreciar el monitoreo de la CPU
 5. 100 Hilos.
-   * ![img.png](100Hilos.png)
+   * ![CPU100Hilos](https://github.com/user-attachments/assets/a319aaa9-9283-4d35-a5d5-8b1c25077253)
+   * ![Time100HilosVisualVM](https://github.com/user-attachments/assets/3282bfdb-df54-45d2-bc06-63839cfb236c)
+6. Gráfica de tiempo de solución vs número de hilos
+   
+   * ![image](https://github.com/user-attachments/assets/119a7d22-36eb-4d87-a70a-73b613d31950)
+
 **Parte IV - Ejercicio Black List Search**
 
 1. Según la [ley de Amdahls](https://www.pugetsystems.com/labs/articles/Estimating-CPU-Performance-using-Amdahls-Law-619/#WhatisAmdahlsLaw?):
