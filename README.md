@@ -22,10 +22,14 @@
 	2. Inicie los tres hilos con 'start()'.
 	3. Ejecute y revise la salida por pantalla. 
 	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
-* El comportamiento cambia, con run() se ejecuta el metodo, no en un hilo separado sino en el hilo principal. Esto quiere decir que los números se imprimirán en el mismo hilo que llama a run, sin ejecución concurrente (porque se imprimen secuencialmente, uno tras otro).
-      - ![img.png](img/img.png)
-* Con start() los números se imprimen concurrentemente y en la consola podemos ver como llegan a mezclarse las ejecuciones, esto debido a que los hilos se ejecutan en paralelo.
-      - ![img_1.png](img/img_1.png)
+* El comportamiento cambia, con run() se ejecuta el método, no en un hilo separado sino en el hilo principal. Esto quiere decir que los números se imprimirán en el mismo hilo que llama a run, sin ejecución concurrente (porque se imprimen secuencialmente, uno tras otro).
+  
+  ![image](https://github.com/user-attachments/assets/7c5a904c-89d8-4304-9f82-6e65f4a0d61d)
+
+* Con start() los números se imprimen en intervalos, esto porque se crea un nuevo hilo y luego se ejecuta el método run() dentro de ese nuevo hilo. En esta alternativa se hace uso de la concurrencia, por lo que podemos ver en la consola como llegan a mezclarse las ejecuciones (Time - Slicing).
+
+  ![image](https://github.com/user-attachments/assets/4163dd23-9897-4229-9a34-baeb2822fa07)
+
        
 **Parte II - Ejercicio Black List Search**
 
